@@ -1,7 +1,10 @@
 import * as Phaser from "phaser";
 
 export default class Game extends Phaser.Scene {
-   groundLayer = undefined;
+   groundLayer;
+   controls;
+   marker;
+   shiftKey;
 
    constructor() {
       super({key: 'game'});
@@ -16,9 +19,10 @@ export default class Game extends Phaser.Scene {
       const map = this.make.tilemap({key: 'tilemap'});
       const tiles = map.addTilesetImage('0x72-industrial-tileset-32px-extruded', 'tiles');
 
-      // map.createDynamicLayer("Background", tiles);
+      // Same setup as static layers
+      map.createDynamicLayer("Background", tiles);
       this.groundLayer = map.createDynamicLayer("Ground", tiles);
-      // map.createDynamicLayer("Foreground", tiles);
+      map.createDynamicLayer("Foreground", tiles);
 
       // Put tile index 1 at tile grid location (20, 10) within layer
       this.groundLayer.putTileAt(1, 20, 10);
@@ -29,8 +33,6 @@ export default class Game extends Phaser.Scene {
 
       // There are also methods for converting from tile grid units to world pixel
       // coordinates and vice versa:  worldToTileXY, tileToWorldXY.
-
-
    }
 
    update() {
