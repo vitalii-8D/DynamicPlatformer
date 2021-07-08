@@ -1,7 +1,8 @@
 import Phaser from 'phaser';
 
 // import Game from "./01-js/Game";
-import Game from "./02-js/Game";
+// import Game from "./02-js/Game";
+import Game from "./03-js/Game";
 
 const config = {
     type: Phaser.AUTO,
